@@ -23,7 +23,13 @@ const AppLayout: React.FC<LayoutProps> = ({ children }) => {
         <AppHeader />
       </Header>
       <Content style={{ padding: "50px 50px" }}>
-        <div style={{ padding: 24, minHeight: 380, background: "white" }}>
+        <div
+          style={{
+            padding: 24,
+            background: "white",
+            minHeight: 800,
+          }}
+        >
           {children}
         </div>
       </Content>
