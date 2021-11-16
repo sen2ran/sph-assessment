@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import config from "./endpoint"
+import config from "./endpoint";
 import { useAsyncAwait } from "../hooks/asyncAwaitHook";
 
 const instance = axios.create({
@@ -9,3 +9,6 @@ const instance = axios.create({
 
 export const GetDetailsById = async () =>
   useAsyncAwait(instance.get(config.api.getDetails));
+
+export const GetSearchItems = async () =>
+  useAsyncAwait(instance.get(config.api.getSearchValue));
