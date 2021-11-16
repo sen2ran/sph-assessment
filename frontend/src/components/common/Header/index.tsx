@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default () => {
+  const history = useHistory();
   return (
     <div className="container-fluid">
       <div className="header">
-        <h1>SPH Assessment</h1>
+        <h1 onClick={() => history.goBack()}>SPH Assessment</h1>
       </div>
     </div>
   );
