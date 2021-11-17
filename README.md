@@ -29,6 +29,16 @@ Install the dependencies and devDependencies and start the server.
 
 Please update HOST_ADDRESS, USER, PASSWORD ```sh .env```
 
+Most of the codes are assumed done. Sometimes need to change the object mapping format or subpath URL.
+
+```sh
+$ sph-assessment\backend\utils\genarateObjUtils.js
+$ generateDetailObj()
+$ generateSearchObj()
+```
+
+these are function need to update if moapping were wrong
+
 ```sh
 $ cd backend
 $ npm install
