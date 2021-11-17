@@ -27,9 +27,9 @@ Install the dependencies and devDependencies and start the server.
 
 #### Backend
 
-Please update HOST_ADDRESS, USER, PASSWORD ```sh .env```
+Please update HOST_ADDRESS, USER, PASSWORD in ``` .env```
 
-Most of the codes are assumed done. Sometimes need to change the object mapping format or subpath URL.
+Most of the codes are assumed and done. Sometimes need to change the object mapping format or subpath URL.
 
 ```sh
 $ sph-assessment\backend\utils\genarateObjUtils.js
@@ -37,7 +37,13 @@ $ generateDetailObj()
 $ generateSearchObj()
 ```
 
-these are function need to update if moapping were wrong
+```sh
+$ sph-assessment\backend\controller
+$ const SEARCH_SUBPATH = "/webservice/open-search/solar/{query}/content-search-description.xml"
+$ const DETAIL_SUBPATH = "/webservice/solar/content/{id}"
+```
+
+these are function and variables need to update if moapping were wrong
 
 ```sh
 $ cd backend
