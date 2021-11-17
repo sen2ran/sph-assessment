@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Card, Avatar, Row, message } from "antd";
 import {
   EditOutlined,
@@ -7,7 +7,6 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 import { GetDetailsById } from "../../api/commonService";
 import { setDetails } from "../../redux/action/searchAction";
@@ -26,11 +25,11 @@ export default () => {
 
   useEffect(() => {
     const getDetails = async () => {
-      const [listData, listErr] = await GetDetailsById();
+      const [listData, listErr] = await GetDetailsById(id);
       if (listErr) {
         message.error("Something went wrong");
-        history.goBack()
-        return -1
+        history.goBack();
+        return -1;
       }
       dispatch(setDetails(listData.data.data));
     };
@@ -68,10 +67,10 @@ export default () => {
                   Content : <b>{selectedDetails?.content}</b>
                 </p>
                 <p>
-                  Created Date :<b>{selectedDetails?.created}</b>
+                  Created Date :<b>{selectedDetails?.created.split("T")[0]}</b>
                 </p>
                 <p>
-                  Edited Date :<b>{selectedDetails?.edited}</b>
+                  Edited Date :<b>{selectedDetails?.edited.split("T")[0]}</b>
                 </p>
               </>
             }
