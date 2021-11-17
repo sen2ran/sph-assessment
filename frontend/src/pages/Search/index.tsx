@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
-import { Row, Col, List, Avatar, Input, Skeleton } from "antd";
+import { Row, Col, List, Avatar, Input, Skeleton, message } from "antd";
 import { useHistory } from "react-router-dom";
 import debounce from "lodash/debounce";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,9 +37,16 @@ export default () => {
   }, [config.inputDebounceInterval]);
 
   const setSearchData = async (keyValue: string) => {
-    const [searchData, searchError] = await GetSearchItems();
+    if (!keyValue) {
+      dispatch(setSearchList([]));
+      setLoading(false);
+      return 0;
+    }
+    const [searchData, searchError] = await GetSearchItems(keyValue);
     if (searchError) {
-      //Send Error
+      dispatch(setSearchList([]));
+      setLoading(false);
+      message.error("Something went wrong");
       return 0;
     }
     dispatch(setSearchList(searchData.data.data));
@@ -70,16 +77,20 @@ export default () => {
               dataSource={searchList}
               style={{ width: "500px" }}
               renderItem={(item) => (
-                <List.Item
-                  onClick={() => {
-                    history.push(`details/${item.id}`);
-                  }}
-                >
-                  <List.Item.Meta
-                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                    title={item.title}
-                  />
-                </List.Item>
+                <a>
+                  <List.Item
+                    onClick={() => {
+                      history.push(`details/${item.id}`);
+                    }}
+                  >
+                    <List.Item.Meta
+                      avatar={
+                        <Avatar src="https://joeschmoe.io/api/v1/random" />
+                      }
+                      title={item.title}
+                    />
+                  </List.Item>
+                </a>
               )}
             />
           )}
