@@ -43,12 +43,12 @@ $ npm install
 $ npm run start
 ```
 
-[react]: https://reactjs.org/
-[redux]: https://redux.js.org/
+[react] : https://reactjs.org/
+[redux] : https://redux.js.org/
 [antdesign] : https://ant.design/
 [typescript] : https://www.typescriptlang.org/
 [react-router-dom] : https://v5.reactrouter.com/web/guides/quick-start
-[axios]: https://www.npmjs.com/package/axios
-[expressjs]: https://expressjs.com/
-[express-async-errors]: https://www.npmjs.com/package/express-async-errors
-[xml-js]: https://www.npmjs.com/package/xml-js
+[axios] : https://www.npmjs.com/package/axios
+[expressjs] : https://expressjs.com/
+[express-async-errors] : https://www.npmjs.com/package/express-async-errors
+[xml-js] : https://www.npmjs.com/package/xml-js
