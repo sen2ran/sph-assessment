@@ -2,20 +2,24 @@ import { useMemo, useState, useEffect } from "react";
 import { Row, Col, List, Avatar, Input, Skeleton } from "antd";
 import { useHistory } from "react-router-dom";
 import debounce from "lodash/debounce";
+import { useDispatch, useSelector } from "react-redux";
 
 import config from "../../api/endpoint";
 import { useQuery } from "../../hooks/useQuery";
 import { GetSearchItems } from "../../api/commonService";
+import { setSearchList } from "../../redux/action/searchAction";
+import { RootState } from "../../redux/reducers/state";
 
 export default () => {
   const [searchVal, setSearchVal] = useState<string | undefined>();
-  //This shoult be from Redux
-  const [searchList, setSearchList] = useState<Array<any>>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   const history = useHistory();
   const query = useQuery();
   const search = query.get("q");
+
+  const { searchList } = useSelector((store: RootState) => store.searchDetail);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (search) {
@@ -38,7 +42,7 @@ export default () => {
       //Send Error
       return 0;
     }
-    setSearchList(searchData.data.data);
+    dispatch(setSearchList(searchData.data.data));
     setLoading(false);
   };
 
