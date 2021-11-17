@@ -7,8 +7,14 @@ const instance = axios.create({
   baseURL: config.baseUrl,
 });
 
-export const GetDetailsById = async () =>
-  useAsyncAwait(instance.get(config.api.getDetails));
+const generateSubPath = (path: string, key: string, val: string) => {
+  return path.replace(key, val);
+};
 
-export const GetSearchItems = async () =>
-  useAsyncAwait(instance.get(config.api.getSearchValue));
+export const GetDetailsById = async (id: string) =>
+  useAsyncAwait(
+    instance.get(generateSubPath(config.api.getDetails, "{id}", id))
+  );
+
+export const GetSearchItems = async (keyVal: string) =>
+  useAsyncAwait(instance.get(`${config.api.getSearchValue}?q=${keyVal}`));
