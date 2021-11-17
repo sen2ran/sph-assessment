@@ -27,7 +27,7 @@ Install the dependencies and devDependencies and start the server.
 
 #### Backend
 
-Please update HOST_ADDRESS, USER=SPH PASSWORD ```sh .env```
+Please update HOST_ADDRESS, USER, PASSWORD ```sh .env```
 
 ```sh
 $ cd backend
