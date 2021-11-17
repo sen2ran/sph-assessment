@@ -1,25 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Avatar, Row } from "antd";
+import { Card, Avatar, Row, message } from "antd";
 import {
   EditOutlined,
   EllipsisOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { GetDetailsById } from "../../api/commonService";
+import { setDetails } from "../../redux/action/searchAction";
+import { RootState } from "../../redux/reducers/state";
 
 const { Meta } = Card;
 
 export default () => {
   const { id } = useParams<any>();
+  const history = useHistory();
+
+  const { selectedDetails } = useSelector(
+    (store: RootState) => store.searchDetail
+  );
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const getDetails = async () => {
       const [listData, listErr] = await GetDetailsById();
       if (listErr) {
-        console.log(listErr);
+        message.error("Something went wrong");
+        history.goBack()
+        return -1
       }
-      console.log(listData.data.data);
+      dispatch(setDetails(listData.data.data));
     };
 
     getDetails();
@@ -33,7 +46,7 @@ export default () => {
           cover={
             <img
               alt="example"
-              style={{  }}
+              style={{}}
               src="https://source.unsplash.com/random?h=200"
             />
           }
@@ -45,20 +58,20 @@ export default () => {
         >
           <Meta
             avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-            title="Card title"
+            title={selectedDetails?.title}
             description={
               <>
                 <p>
-                  Author : <b>Senthurna</b>
+                  Author : <b>{selectedDetails?.author}</b>
                 </p>
                 <p>
-                  Author : <b>Senthurna</b>
+                  Content : <b>{selectedDetails?.content}</b>
                 </p>
                 <p>
-                  Author : <b>Senthurna</b>
+                  Created Date :<b>{selectedDetails?.created}</b>
                 </p>
                 <p>
-                  Author : <b>Senthurna</b>
+                  Edited Date :<b>{selectedDetails?.edited}</b>
                 </p>
               </>
             }
