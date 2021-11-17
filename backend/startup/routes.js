@@ -3,14 +3,14 @@ const cors = require("cors");
 const morgan = require("morgan");
 const error = require("../middleware/error");
 
-const search = require("../route/search");
+const searchRoute = require("../route/searchRoute");
 
 module.exports = function (app) {
   app.use(cors());
   app.use(morgan("common"));
   app.use(express.json());
   //Routes
-  app.use("/api/search", search);
+  app.use("/api/search", searchRoute);
   //Error Handling
   app.use(error);
 };
