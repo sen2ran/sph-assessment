@@ -3,7 +3,6 @@ const winston = require("winston");
 
 const { port } = require("./config");
 
-
 const app = express();
 require("./startup/logging")();
 require("./startup/routes")(app);
