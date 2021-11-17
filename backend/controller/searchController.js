@@ -18,13 +18,13 @@ const getSearch = async (req, res) => {
             details: "Missing parameter",
         });
     }
-    //Dummy data for FE
-    if (req.query.q == "sen2") {
-        return res.send({
-            data: searchDummyData,
-            details: "Data Retrived successfully",
-        });
-    }
+    // //Dummy data for FE
+    // if (req.query.q == "sen2") {
+    //     return res.send({
+    //         data: searchDummyData,
+    //         details: "Data Retrived successfully",
+    //     });
+    // }
 
     try {
         let { data } = await instance.get(generateSubPath(SEARCH_SUBPATH, "{query}", req.query.q));
@@ -42,13 +42,13 @@ const getSearch = async (req, res) => {
 }
 
 const getDetail = async (req, res) => {
-    //Dummy data for FE
-    if (req.params.id == "9999") {
-        return res.send({
-            data: detailDummyData,
-            details: "Data Retrived successfully",
-        });
-    }
+    // //Dummy data for FE
+    // if (req.params.id == "9999") {
+    //     return res.send({
+    //         data: detailDummyData,
+    //         details: "Data Retrived successfully",
+    //     });
+    // }
     try {
         let { data } = await instance.get(generateSubPath(DETAIL_SUBPATH, "{id}", req.params.id));
         const formatedData = generateDetailObj(data)
