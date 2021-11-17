@@ -1,6 +1,6 @@
 # sph-assessment
 
-## React + Redux + Ant Design + React Router DOM + TypeScript And Express JS + XmlJs + Moment
+## React + Redux + Ant Design + React Router DOM + TypeScript And Express JS + XmlJs 
 
 ![N|Solid](https://github.com/sen2ran/sph-assessment/blob/main/Screenshot.gif?raw=true)
 
