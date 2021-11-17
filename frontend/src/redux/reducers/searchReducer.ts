@@ -6,9 +6,8 @@ import {
 import { ISearchState } from "../../redux/types/SearchState";
 
 export const initialState: ISearchState = {
-  loading: false,
   searchList: [],
-  selectedList: undefined,
+  selectedDetails: undefined,
 };
 
 export const searchDetailsReducers = (state = initialState, action: any) => {
@@ -21,7 +20,7 @@ export const searchDetailsReducers = (state = initialState, action: any) => {
     case SET_DETAIL:
       return {
         ...state,
-        selectedList: action.payload,
+        selectedDetails: action.payload,
       };
     default:
       return state;

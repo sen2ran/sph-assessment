@@ -1,5 +1,12 @@
+interface ISelectedDetails {
+  author: string;
+  title: string;
+  content: string;
+  edited: string;
+  created: string;
+}
+
 export interface ISearchState {
-  loading: boolean;
   searchList: Array<any>;
-  selectedList: any;
+  selectedDetails: ISelectedDetails | undefined;
 }

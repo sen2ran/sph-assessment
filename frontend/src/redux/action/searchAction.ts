@@ -10,8 +10,16 @@ export const setSearchList = (data: any) => {
   };
 };
 
-export const setDetails = () => {
+export const setDetails = (data: any) => {
   return {
     type: SET_DETAIL,
+    payload: data,
+  };
+};
+
+export const setLoading = (data: boolean) => {
+  return {
+    type: SET_DETAIL,
+    payload: data,
   };
 };
