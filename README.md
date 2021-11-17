@@ -41,6 +41,7 @@ $ npm run start
 $ cd frontend
 $ npm install
 $ npm run start
+```
 
 [react]: https://reactjs.org/
 [redux]: https://redux.js.org/
